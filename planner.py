@@ -4,16 +4,16 @@ def ask_user(tasks):
 
     print('')
     answers_left = 7
-    while answers_left > 0:
+    while len(tasks) < 7:
         print('What do you need to do this week? Input tasks separated by a comma then a space. ')
         answers = input('Enter: ').split(', ')
         tasks += answers
         answer_count = len(answers)
-        if len(answers) < 7:
+        if len(tasks) < 7:
             answers_left -= answer_count
             print('You still have ' + str(answers_left) + ' more tasks to put in.')
             print('')
-        elif len(answers) >= 7:
+        elif len(tasks) >= 7:
             break
     return tasks
 
