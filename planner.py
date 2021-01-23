@@ -13,8 +13,7 @@ def ask_user(tasks):
             answers_left -= answer_count
             print('You still have ' + str(answers_left) + ' more tasks to put in.')
             print('')
-        elif len(tasks) >= 7:
-            break
+
     return tasks
 
 def combine_lists(weekdays, tasks):
