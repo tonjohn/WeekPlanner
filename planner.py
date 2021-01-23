@@ -21,12 +21,13 @@ def ask_user(tasks):
         # merge user's answers into task list
         tasks += answers
 
-        # create intermediate variable to make code more semantic and reduce duplicate len() calls
+        # create intermediate variables to make code more semantic
+        # this also can help in debugging as it allows you inspect changes step-by-step
         task_count = len(tasks)
+        answers_left = TASK_COUNT_MINIMUM - task_count
 
         # if user hasn't provided enough tasks, let them know how many they have remaining
-        if task_count < TASK_COUNT_MINIMUM:
-            answers_left = TASK_COUNT_MINIMUM - task_count
+        if answers_left > 0:
             print('You still have {answers_left} more tasks to put in.'.format(answers_left=answers_left))
             print('')
 
