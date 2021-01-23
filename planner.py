@@ -1,17 +1,19 @@
 import random
 
+TASK_COUNT_MINIMUM = 7 # at least 1 task per day of week
+
 def ask_user(tasks):
 
     print('')
-    answers_left = 7
-    while len(tasks) < 7:
+
+    while len(tasks) < TASK_COUNT_MINIMUM:
         print('What do you need to do this week? Input tasks separated by a comma then a space. ')
         answers = input('Enter: ').split(', ')
         tasks += answers
-        answer_count = len(answers)
-        if len(tasks) < 7:
-            answers_left -= answer_count
-            print('You still have ' + str(answers_left) + ' more tasks to put in.')
+        task_count = len(tasks)
+        if task_count < TASK_COUNT_MINIMUM:
+            answers_left = TASK_COUNT_MINIMUM - task_count
+            print('You still have {answers_left} more tasks to put in.'.format(answers_left=answers_left))
             print('')
 
     return tasks
