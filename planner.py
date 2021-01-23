@@ -3,14 +3,28 @@ import random
 TASK_COUNT_MINIMUM = 7 # at least 1 task per day of week
 
 def ask_user(tasks):
+    """
+    Prompt the user and collect list of tasks from user input
+
+    NOTE: the list of tasks is modified in-place as lists are passed by reference, not value.
+    """
 
     print('')
 
+    # Loop until the user has provided at least the minimum number of tasks
     while len(tasks) < TASK_COUNT_MINIMUM:
         print('What do you need to do this week? Input tasks separated by a comma then a space. ')
+        
+        # get user's input and convert to list of strings
         answers = input('Enter: ').split(', ')
+
+        # merge user's answers into task list
         tasks += answers
+
+        # create intermediate variable to make code more semantic and reduce duplicate len() calls
         task_count = len(tasks)
+
+        # if user hasn't provided enough tasks, let them know how many they have remaining
         if task_count < TASK_COUNT_MINIMUM:
             answers_left = TASK_COUNT_MINIMUM - task_count
             print('You still have {answers_left} more tasks to put in.'.format(answers_left=answers_left))
